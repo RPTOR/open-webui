@@ -723,7 +723,21 @@ body {
 }
 
 .dark body {
-	background: #171717;
+	background:
+		/* subtle dot pattern */
+		radial-gradient(rgba(245, 197, 66, 0.04) 1px, transparent 1px),
+		/* warm glow top-right */
+		radial-gradient(ellipse 80% 60% at 100% 0%, rgba(245, 197, 66, 0.06) 0%, transparent 60%),
+		/* deep glow bottom-left */
+		radial-gradient(ellipse 60% 40% at 0% 100%, rgba(168, 85, 247, 0.05) 0%, transparent 50%),
+		/* main gradient */
+		linear-gradient(160deg, #1c1225 0%, #281b38 25%, #352645 50%, #2d1d3a 75%, #1c1225 100%);
+	background-attachment: fixed;
+	background-size:
+		24px 24px,
+		100% 100%,
+		100% 100%,
+		100% 100%;
 	color: #eee;
 }
 

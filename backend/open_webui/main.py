@@ -287,6 +287,7 @@ from open_webui.config import (
     MISTRAL_OCR_API_KEY,
     MODEL_ORDER_LIST,
     MOJEEK_SEARCH_API_KEY,
+    MANTLE_SHOW_ADVANCED_SETTINGS,
     OAUTH_ADMIN_ROLES,
     OAUTH_ALLOWED_ROLES,
     OAUTH_AUTO_REDIRECT,
@@ -2415,6 +2416,7 @@ async def get_app_config(request: Request):
             'enable_signup': app.state.config.ENABLE_SIGNUP,
             'enable_login_form': app.state.config.ENABLE_LOGIN_FORM,
             'enable_websocket': ENABLE_WEBSOCKET_SUPPORT,
+            'mantle_show_advanced_settings': MANTLE_SHOW_ADVANCED_SETTINGS,
             # --- Authenticated: only consumed by logged-in frontend ---
             **(
                 {

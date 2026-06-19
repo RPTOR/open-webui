@@ -1,0 +1,15 @@
+services:
+  mantle:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: mantle
+    restart: unless-stopped
+    ports:
+      - "3001:8080"
+    volumes:
+      - ./data:/app/backend/data
+    environment:
+      - WEBUI_NAME=MANTLE
+      - WEBUI_SECRET_KEY=change-this-to-a-random-string
+      - MANTLE_SHOW_ADVANCED_SETTINGS=Connections,Models,Evaluations,Documents,Web Search,Interface

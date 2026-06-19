@@ -2984,6 +2984,8 @@ ENABLE_ADMIN_CHAT_ACCESS = os.getenv('ENABLE_ADMIN_CHAT_ACCESS', 'True').lower()
 
 ENABLE_ADMIN_ANALYTICS = os.getenv('ENABLE_ADMIN_ANALYTICS', 'True').lower() == 'true'
 
+MANTLE_SHOW_ADVANCED_SETTINGS = os.getenv('MANTLE_SHOW_ADVANCED_SETTINGS', '')
+
 ENABLE_COMMUNITY_SHARING = ConfigVar(
     'ENABLE_COMMUNITY_SHARING',
     'ui.enable_community_sharing',

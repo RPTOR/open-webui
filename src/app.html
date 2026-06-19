@@ -115,7 +115,21 @@
 			})();
 		</script>
 
-		<title>Open WebUI</title>
+		<title>MANTLE</title>
+
+		<script id="mantle-theme">
+			(function(){
+				var css='.dark #sidebar-webui-name{background:linear-gradient(135deg,#f5c542,#e8b028)!important;-webkit-background-clip:text!important;background-clip:text!important;color:transparent!important;font-weight:800!important;letter-spacing:-0.02em!important}';
+				function apply(){
+					if(!document.documentElement.classList.contains('dark'))return;
+					var e=document.getElementById('mantle-theme-inject');
+					if(!e){e=document.createElement('style');e.id='mantle-theme-inject';document.head.appendChild(e)}
+					e.textContent=css;
+				}
+				function init(){setTimeout(apply,500);new MutationObserver(apply).observe(document.documentElement,{attributes:true,attributeFilter:['class']})}
+				document.readyState==='loading'?document.addEventListener('DOMContentLoaded',init):init();
+			})();
+		</script>
 
 		%sveltekit.head%
 	</head>

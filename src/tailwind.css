@@ -3,18 +3,29 @@
 @config '../tailwind.config.js';
 
 @theme {
-	--color-gray-50: oklch(0.98 0 0);
-	--color-gray-100: oklch(0.94 0 0);
-	--color-gray-200: oklch(0.92 0 0);
-	--color-gray-300: oklch(0.85 0 0);
-	--color-gray-400: oklch(0.77 0 0);
-	--color-gray-500: oklch(0.69 0 0);
-	--color-gray-600: oklch(0.51 0 0);
-	--color-gray-700: oklch(0.42 0 0);
-	--color-gray-800: oklch(0.32 0 0);
-	--color-gray-850: oklch(0.27 0 0);
-	--color-gray-900: oklch(0.2 0 0);
-	--color-gray-950: oklch(0.16 0 0);
+	--color-gray-50: #faf5f0;
+	--color-gray-100: #f0e8e0;
+	--color-gray-200: #e0d5c8;
+	--color-gray-300: #c8b8a8;
+	--color-gray-400: #a89888;
+	--color-gray-500: #887868;
+	--color-gray-600: #685848;
+	--color-gray-700: #4a3a5a;
+	--color-gray-800: #352645;
+	--color-gray-850: #281b35;
+	--color-gray-900: #1c1225;
+	--color-gray-950: #120a18;
+
+	--color-emerald-50: #fffdf0;
+	--color-emerald-100: #fef8d5;
+	--color-emerald-200: #fdf0a8;
+	--color-emerald-300: #fce378;
+	--color-emerald-400: #f5c542;
+	--color-emerald-500: #e8b028;
+	--color-emerald-600: #d49a1a;
+	--color-emerald-700: #b88210;
+	--color-emerald-800: #9a6808;
+	--color-emerald-900: #7d5000;
 }
 
 /*

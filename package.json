@@ -19,7 +19,8 @@
 		"i18n:parse": "i18next --config i18next-parser.config.ts && prettier --write \"src/lib/i18n/**/*.{js,json}\"",
 		"cy:open": "cypress open",
 		"test:frontend": "vitest --passWithNoTests",
-		"pyodide:fetch": "node scripts/prepare-pyodide.js"
+		"pyodide:fetch": "node scripts/prepare-pyodide.js",
+		"check:branding": "grep -rn 'Open WebUI' src/app.html src/lib/constants.ts src/routes/+layout.svelte src/lib/components/channel/Channel.svelte && { echo 'FAIL: branded strings found'; exit 1; } || echo '✓ Branding intact'"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "3.2.2",

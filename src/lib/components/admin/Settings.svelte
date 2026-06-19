@@ -31,11 +31,36 @@
 
 	let selectedTab = 'general';
 
+	$: visibleSettings = (() => {
+		const raw = $config?.features?.mantle_show_advanced_settings ?? '';
+		if (!raw || raw.trim() === '') {
+			return ['general'];
+		}
+		const nameToId = {
+			'general': 'general',
+			'connections': 'connections',
+			'models': 'models',
+			'evaluations': 'evaluations',
+			'integrations': 'integrations',
+			'documents': 'documents',
+			'web search': 'web',
+			'code execution': 'code-execution',
+			'interface': 'interface',
+			'audio': 'audio',
+			'images': 'images',
+			'pipelines': 'pipelines',
+			'database': 'db'
+		};
+		const allowed = raw.split(',').map((s) => nameToId[s.trim().toLowerCase()] ?? '').filter(Boolean);
+		allowed.push('general');
+		return allowed;
+	})();
+
 	// Get current tab from URL pathname, default to 'general'
 	$: {
 		const pathParts = $page.url.pathname.split('/');
 		const tabFromPath = pathParts[pathParts.length - 1];
-		selectedTab = [
+		const allIds = [
 			'general',
 			'connections',
 			'models',
@@ -49,9 +74,12 @@
 			'images',
 			'pipelines',
 			'db'
-		].includes(tabFromPath)
-			? tabFromPath
-			: 'general';
+		];
+		if (allIds.includes(tabFromPath) && visibleSettings.includes(tabFromPath)) {
+			selectedTab = tabFromPath;
+		} else {
+			selectedTab = 'general';
+		}
 	}
 
 	$: if (selectedTab) {
@@ -248,6 +276,9 @@
 
 	const setFilteredSettings = () => {
 		filteredSettings = allSettings.filter((tab) => {
+			if (!visibleSettings.includes(tab.id)) {
+				return false;
+			}
 			const searchTerm = search.toLowerCase().trim();
 			return (
 				search === '' ||
