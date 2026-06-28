@@ -84,7 +84,8 @@ create_note \
 3. Select a base model (e.g., Qwen)
 4. In the **Knowledge** section, select your knowledge base
 5. Use the **System Prompt** field to set instructions for how the model should respond based on your knowledge
-6. Save the model
+6. Add **Tags** (e.g., "finance", "hr", "academic") — tags appear as filter options in the chat model dropdown, making it easy for users to find models by category
+7. Save the model
 
 ## Step 3: Share with Users
 1. Click the **lock icon** next to the model name
