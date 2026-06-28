@@ -41,7 +41,6 @@ services:
       - "3001:8080"
     volumes:
       - /root/frontend/open-webui:/app/backend/data
-      - ./custom.css:/app/backend/open_webui/static/custom.css
       - ./bg.png:/app/backend/open_webui/static/bg.png
     networks:
       - homelab_network
@@ -62,8 +61,8 @@ networks:
 ### 2. Place overlays
 
 Alongside the compose file, place:
-- `custom.css` — Visual theme (warm plum/gold)
-- `bg.png` — Chat background image
+- `custom.css` — Visual theme (warm plum/gold) — copy into container after start
+- `bg.png` — Chat background image (mount via compose or copy)
 - `favicon.png`, `logo.png`, `splash.png` — Branding assets
 
 ### 3. Start
@@ -72,7 +71,15 @@ Alongside the compose file, place:
 docker compose up -d
 ```
 
-### 4. Verify
+### 4. Copy custom.css into container
+
+custom.css can't be bind-mounted (file already exists in the image), so copy it in:
+
+```sh
+docker cp custom.css mantle:/app/backend/open_webui/static/custom.css
+```
+
+### 5. Verify
 
 ```sh
 curl -s http://localhost:3001/health
@@ -190,13 +197,12 @@ docker network create homelab_network  # if not existing
 docker compose up -d
 
 # 3. Place overlays
-cp custom.css ./custom.css
 cp bg.png ./bg.png
 cp favicon.png ./favicon.png
 # ... repeat for all static assets
 
-# 4. Restart to pick up overlay files
-docker compose restart
+# 4. Copy custom.css into container (can't be bind-mounted)
+docker cp custom.css mantle:/app/backend/open_webui/static/custom.css
 
 # 5. Verify
 curl -s http://localhost:3001/health

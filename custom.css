@@ -1,7 +1,4 @@
-/* ── MANTLE Dark Theme ──
-   Background: warm plum/mauve gradient
-   Accent: amber/gold
-*/
+/* MANTLE Dark Theme */
 .dark {
   --color-emerald-400: #f5c542;
   --color-emerald-500: #e8b028;
@@ -16,7 +13,7 @@
 }
 
 .dark body {
-  background: linear-gradient(155deg, #1c1225 0%, #281b38 25%, #352645 50%, #2d1d3a 75%, #1c1225 100%) fixed !important;
+  background: linear-gradient(155deg, #1c1225, #281b38, #352645, #2d1d3a, #1c1225) fixed !important;
 }
 
 .dark ::selection {
@@ -47,18 +44,6 @@
 
 .dark #chat-pane {
   background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('/static/bg.png') center / cover no-repeat scroll !important;
-}
-
-.dark #chat-pane input,
-.dark #chat-pane textarea,
-.dark #chat-pane select {
-  caret-color: #f5c542 !important;
-}
-.dark #chat-pane input:focus-visible,
-.dark #chat-pane textarea:focus-visible,
-.dark #chat-pane select:focus-visible {
-  box-shadow: 0 0 0 3px rgba(245, 197, 66, 0.2) !important;
-  border-color: #f5c542 !important;
 }
 
 .dark input[type="checkbox"]:checked {
