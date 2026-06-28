@@ -135,6 +135,62 @@ If unset or empty, only `General` is visible.
 | `OPENAI_API_BASE_URL` | OpenAI-compatible API base URL |
 | `OPENAI_API_KEY` | OpenAI API key |
 
+## User Management
+
+### Roles
+
+Three roles: `admin` (full access), `user` (permission-evaluated), `pending` (locked). Default for new signups is set via `DEFAULT_USER_ROLE` env var.
+
+### Two personas
+
+| Persona | Workspace access | Description |
+|---|---|---|
+| **Curator** | models, knowledge, prompts | Creates RAG knowledge bases, uploads docs, binds to models |
+| **Consumer** | None | Uses chat, queries RAG via file upload, no workspace access |
+
+### Consumer permission defaults
+
+Set these in the compose environment to restrict consumer users:
+
+```yaml
+- USER_PERMISSIONS_WORKSPACE_MODELS_ACCESS=false
+- USER_PERMISSIONS_WORKSPACE_KNOWLEDGE_ACCESS=false
+- USER_PERMISSIONS_WORKSPACE_PROMPTS_ACCESS=false
+- USER_PERMISSIONS_WORKSPACE_TOOLS_ACCESS=false
+- USER_PERMISSIONS_WORKSPACE_SKILLS_ACCESS=false
+- USER_PERMISSIONS_FEATURES_IMAGE_GENERATION=false
+- USER_PERMISSIONS_FEATURES_CHANNELS=false
+- USER_PERMISSIONS_FEATURES_CODE_INTERPRETER=false
+- USER_PERMISSIONS_FEATURES_AUTOMATIONS=false
+- USER_PERMISSIONS_FEATURES_CALENDAR=false
+- USER_PERMISSIONS_FEATURES_API_KEYS=false
+- USER_PERMISSIONS_FEATURES_DIRECT_TOOL_SERVERS=false
+- USER_PERMISSIONS_CHAT_TEMPORARY=false
+- USER_PERMISSIONS_ACCESS_GRANTS_ALLOW_USERS=false
+```
+
+### Per-customer setup
+
+```sh
+# 1. First sign-up becomes admin
+
+# 2. Admin creates "Curator" group:
+#    Admin Panel → Users → Groups → New Group
+#    Enable: workspace.models, workspace.knowledge, workspace.prompts
+
+# 3. Admin creates curator accounts → assigns to Curator group
+
+# 4. Curators log in, create knowledge bases, upload docs,
+#    create RAG models bound to knowledge
+
+# 5. Consumers sign up → automatically get restrictive defaults
+#    They can only chat and upload files for RAG queries
+```
+
+### Complete permissions reference
+
+All 49 permission flags are defined in `backend/open_webui/config.py:2630-2810`.
+
 ## Data Persistence
 
 All persistent data lives at `/root/frontend/open-webui/` via bind mount:

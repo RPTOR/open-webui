@@ -51,6 +51,61 @@ The theme includes:
 
 Users set their own background via **Settings (gear icon) → Interface → Chat Background Image → Upload**. No default bg is set — users choose what they want.
 
+## User groups & permissions
+
+Three roles: `admin` (full access), `user` (permission-evaluated), `pending` (locked). Default for new signups is `user` via `DEFAULT_USER_ROLE` env var.
+
+### Two user personas
+
+| Persona | Workspace access | Description |
+|---|---|---|
+| **Curator** | models, knowledge, prompts | Creates RAG knowledge bases, uploads docs, binds to models |
+| **Consumer** | None | Uses chat, queries RAG via file upload, no workspace access |
+
+### Consumer defaults (env vars in docker-compose)
+
+```yaml
+- USER_PERMISSIONS_WORKSPACE_MODELS_ACCESS=false
+- USER_PERMISSIONS_WORKSPACE_KNOWLEDGE_ACCESS=false
+- USER_PERMISSIONS_WORKSPACE_PROMPTS_ACCESS=false
+- USER_PERMISSIONS_WORKSPACE_TOOLS_ACCESS=false
+- USER_PERMISSIONS_WORKSPACE_SKILLS_ACCESS=false
+- USER_PERMISSIONS_FEATURES_IMAGE_GENERATION=false
+- USER_PERMISSIONS_FEATURES_CHANNELS=false
+- USER_PERMISSIONS_FEATURES_CODE_INTERPRETER=false
+- USER_PERMISSIONS_FEATURES_AUTOMATIONS=false
+- USER_PERMISSIONS_FEATURES_CALENDAR=false
+- USER_PERMISSIONS_FEATURES_API_KEYS=false
+- USER_PERMISSIONS_FEATURES_DIRECT_TOOL_SERVERS=false
+- USER_PERMISSIONS_CHAT_TEMPORARY=false
+- USER_PERMISSIONS_ACCESS_GRANTS_ALLOW_USERS=false
+```
+
+### Setup flow per customer
+
+```sh
+# 1. Deploy with env vars above
+docker compose up -d && docker cp custom.css mantle:/app/...
+
+# 2. First sign-up becomes admin
+
+# 3. Admin creates "Curator" group:
+#    Admin → Users → Groups → New Group
+#    Enable: workspace.models, workspace.knowledge, workspace.prompts
+
+# 4. Admin creates curator accounts and assigns them to the group
+
+# 5. Curators log in, create knowledge bases, upload docs,
+#    create RAG models bound to knowledge
+
+# 6. Consumers sign up → automatically get restrictive defaults
+#    They can only chat and upload files for RAG
+```
+
+### Complete permissions reference
+
+All 49 flags at `backend/open_webui/config.py:2630-2810`.
+
 ## Multi-deployment checklist
 
 For each new instance:
