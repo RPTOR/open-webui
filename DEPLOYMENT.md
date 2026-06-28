@@ -259,7 +259,11 @@ cp favicon.png ./favicon.png
 # 4. Copy custom.css into container
 docker cp custom.css mantle:/app/backend/open_webui/static/custom.css
 
-# 5. Verify
+# 5. Seed default notes (run after first admin signs up)
+#    Get admin token and run:
+#    ./scripts/seed-notes.sh <admin-token>
+
+# 6. Verify
 curl -s http://localhost:3001/health
 ```
 

@@ -51,6 +51,23 @@ The theme includes:
 
 Users set their own background via **Settings (gear icon) → Interface → Chat Background Image → Upload**. No default bg is set — users choose what they want.
 
+## Seeding default notes
+
+Run after the first admin signs up and obtains a token:
+
+```sh
+# Get admin token
+ADMIN_TOKEN=$(curl -s -X POST http://localhost:3001/api/v1/auths/signin \
+  -H "Content-Type: application/json" \
+  -d '{"email":"admin@mantle.local","password":"Admin123!"}' | \
+  python3 -c "import sys,json; print(json.load(sys.stdin).get('token',''))")
+
+# Seed notes
+./scripts/seed-notes.sh "$ADMIN_TOKEN"
+```
+
+Then open each seeded note and use **Access Control** to share with the appropriate group (Admins, Curators, etc.).
+
 ## User groups & permissions
 
 Three roles: `admin` (full access), `user` (permission-evaluated), `pending` (locked). Default for new signups is `user` via `DEFAULT_USER_ROLE` env var.
@@ -120,7 +137,10 @@ docker compose up -d
 docker cp custom.css mantle:/app/backend/open_webui/static/custom.css
 #    favicon.*, logo.png, splash*.png → replace in static dir
 
-# 4. Verify
+# 4. First admin signs up → obtain token and seed notes
+#    (see "Seeding default notes" above)
+
+# 5. Verify
 curl -s http://localhost:3001/health
 ```
 
