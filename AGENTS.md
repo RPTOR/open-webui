@@ -35,7 +35,7 @@ docker compose up -d
 
 ## custom.css
 
-The file at `./custom.css` provides all visual theming. It can't be bind-mounted (the file already exists in the image), so copy it in after container start:
+The file at `./custom.css` provides visual theming. Copy it in after container start:
 
 ```sh
 docker cp custom.css mantle:/app/backend/open_webui/static/custom.css
@@ -44,9 +44,12 @@ docker cp custom.css mantle:/app/backend/open_webui/static/custom.css
 The theme includes:
 - Warm plum background gradient
 - Amber/gold accent colors
-- Chat background image with dark overlay (`/static/bg.png`)
 - Gold-tinted scrollbar and selection
 - Input focus rings in accent color
+
+## Chat background
+
+Users set their own background via **Settings (gear icon) → Interface → Chat Background Image → Upload**. No default bg is set — users choose what they want.
 
 ## Multi-deployment checklist
 
@@ -58,7 +61,7 @@ For each new instance:
 docker compose up -d
 
 # 3. Place static overlays
-#    custom.css, bg.png → copy into container
+#    custom.css → copy into container
 docker cp custom.css mantle:/app/backend/open_webui/static/custom.css
 #    favicon.*, logo.png, splash*.png → replace in static dir
 

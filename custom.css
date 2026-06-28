@@ -42,19 +42,10 @@
   font-weight: 800 !important;
 }
 
-.dark #chat-pane {
-  background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('/static/bg.png') center / cover no-repeat scroll !important;
-}
-
 .dark input[type="checkbox"]:checked {
   background-color: #f5c542 !important;
   border-color: #f5c542 !important;
 }
 .dark [role="switch"][aria-checked="true"] {
   background: #f5c542 !important;
-}
-
-.dark #progress-bar {
-  background: linear-gradient(90deg, #f5c542, #e8b028, #f5c542) !important;
-  background-size: 200% 100% !important;
 }

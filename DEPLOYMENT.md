@@ -61,8 +61,7 @@ networks:
 ### 2. Place overlays
 
 Alongside the compose file, place:
-- `custom.css` — Visual theme (warm plum/gold) — copy into container after start
-- `bg.png` — Chat background image (mount via compose or copy)
+- `custom.css` — Visual theme — copy into container after start
 - `favicon.png`, `logo.png`, `splash.png` — Branding assets
 
 ### 3. Start
@@ -159,13 +158,15 @@ The file mounted at `./custom.css` overrides the upstream CSS at runtime. It con
 |---|---|
 | Body background | `.dark body { background: linear-gradient(...) }` |
 | Accent colors | CSS variable overrides (`--color-emerald-*`, `--color-blue-*`, etc.) |
-| Chat background | `#chat-pane { background: linear-gradient(overlay), url('/static/bg.png') }` |
 | Scrollbar | `::-webkit-scrollbar-thumb { background: ... }` |
 | Selection | `::selection { background: ... }` |
 | Links | `a { color: ... }` |
 | Sidebar logo | `#sidebar-webui-name { background: gradient; -webkit-background-clip: text }` |
-| Input focus | `input:focus-visible { box-shadow: ...; border-color: ... }` |
 | Checkboxes/Switches | `input[checked], [role="switch"][aria-checked="true"] { background: ... }` |
+
+### Chat Background
+
+Users set their own background via **Settings (gear icon) → Interface → Chat Background Image → Upload**. The uploaded image is stored as a data URL in user settings — no server-side configuration needed.
 
 ### Static Assets
 
@@ -180,7 +181,6 @@ Replace files in the container's `/app/backend/open_webui/static/` directory:
 | `logo.png` | Brand logo |
 | `splash.png` | Light splash screen image |
 | `splash-dark.png` | Dark splash screen image |
-| `bg.png` | Chat background image |
 
 Mount files via compose volumes or copy them into the data directory.
 
@@ -197,11 +197,10 @@ docker network create homelab_network  # if not existing
 docker compose up -d
 
 # 3. Place overlays
-cp bg.png ./bg.png
 cp favicon.png ./favicon.png
 # ... repeat for all static assets
 
-# 4. Copy custom.css into container (can't be bind-mounted)
+# 4. Copy custom.css into container
 docker cp custom.css mantle:/app/backend/open_webui/static/custom.css
 
 # 5. Verify
