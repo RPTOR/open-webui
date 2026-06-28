@@ -31,7 +31,6 @@ docker compose up -d
 | `WEBUI_URL` | public URL | OAuth callback / CORS |
 | `ENABLE_SIGNUP` | `True` | Allow new user registration |
 | `DEFAULT_USER_ROLE` | `user` | Default role on signup |
-| `MANTLE_SHOW_ADVANCED_SETTINGS` | `Connections,Models,...` | Comma-separated admin tabs to show |
 
 ## custom.css
 

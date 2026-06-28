@@ -18,7 +18,8 @@ services:
       - DEFAULT_USER_ROLE=user
       - ENABLE_RAG_OCR=True
       - CONTENT_EXTRACTION_ENGINE=pypdfium2
-      - MANTLE_SHOW_ADVANCED_SETTINGS=Connections,Models,Evaluations,Documents,Web Search,Interface
+      - ENABLE_CHANNELS=true
+      - ENABLE_COMMUNITY_SHARING=false
       # ── Default user permissions (Consumer role) ──
       - USER_PERMISSIONS_WORKSPACE_MODELS_ACCESS=false
       - USER_PERMISSIONS_WORKSPACE_KNOWLEDGE_ACCESS=true

@@ -106,7 +106,7 @@ Welcome to MANTLE. This guide covers the initial setup.
 - **Review permissions**: Admin Panel → Users → Groups → Default Permissions
 
 ## Managing the System
-- **Admin Settings**: Admin Panel → Settings (tabs are gated by MANTLE_SHOW_ADVANCED_SETTINGS)
+- **Admin Settings**: Admin Panel → Settings
 - **Usage analytics**: Available in Admin Panel → Analytics
 - **Backups**: PostgreSQL data is persistent in the configured data volume" \
   "Admin"

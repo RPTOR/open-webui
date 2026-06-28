@@ -3,9 +3,7 @@
 ## Overview
 
 MANTLE is a branded deployment of [Open Web UI](https://github.com/open-webui/open-webui). No source code is modified — all customizations are applied via:
-- **Environment variables** (`WEBUI_NAME`, `MANTLE_SHOW_ADVANCED_SETTINGS`, etc.)
 - **Static asset overlays** (`custom.css`, `bg.png`, favicon, logo)
-- **Backend feature flag** (`MANTLE_SHOW_ADVANCED_SETTINGS` env var)
 
 ## Architecture
 
@@ -51,7 +49,6 @@ services:
       - WEBUI_URL=https://your-domain.com
       - ENABLE_SIGNUP=True
       - DEFAULT_USER_ROLE=user
-      - MANTLE_SHOW_ADVANCED_SETTINGS=Connections,Models,Evaluations,Documents,Web Search,Interface
 
 networks:
   homelab_network:
@@ -114,18 +111,6 @@ Example:
 ```yaml
 - DATABASE_URL=postgresql://postgres:password@db:5432/openwebui
 ```
-
-### Admin Settings Visibility
-
-Control which admin settings tabs are visible. Comma-separated list:
-
-```yaml
-- MANTLE_SHOW_ADVANCED_SETTINGS=Connections,Models,Evaluations,Documents,Web Search,Interface
-```
-
-Available values: `General` (always shown), `Connections`, `Models`, `Evaluations`, `Integrations`, `Documents`, `Web Search`, `Code Execution`, `Interface`, `Audio`, `Images`, `Pipelines`, `Database`.
-
-If unset or empty, only `General` is visible.
 
 ### Ollama / OpenAI
 
