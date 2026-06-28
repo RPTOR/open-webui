@@ -113,9 +113,7 @@ Prompts are reusable instructions that help users get consistent results.
 
 create_note \
   "About MANTLE" \
-"# About MANTLE
-
-Welcome to MANTLE — your AI-powered knowledge workspace.
+"Welcome to MANTLE — your AI-powered knowledge workspace.
 
 ## What You Can Do
 - **Chat with AI models** using RAG-enhanced responses
