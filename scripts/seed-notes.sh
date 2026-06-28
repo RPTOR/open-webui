@@ -119,6 +119,7 @@ create_note \
 - **Chat with AI models** using RAG-enhanced responses
 - **Upload documents** in chat to query them on the fly
 - **Create knowledge bases** to build persistent RAG collections
+- **Use Channels** to collaborate with your team in shared conversations
 - **Take notes** to record insights and share with your team
 
 ## Need Help?
