@@ -1,35 +1,25 @@
 services:
   mantle:
-    build: /home/jamescklim/development/MANTLE
+    image: ghcr.io/open-webui/open-webui:latest
     container_name: mantle
     restart: unless-stopped
     ports:
       - "3001:8080"
     volumes:
       - /root/frontend/open-webui:/app/backend/data
+      - ./custom.css:/app/backend/open_webui/static/custom.css
+      - ./bg.png:/app/backend/open_webui/static/bg.png
     networks:
       - homelab_network
     environment:
-      - WEBUI_SECRET_KEY=abcdgdgsouwqiouehfnjshauit1y2ohjyouyoji21
       - WEBUI_NAME=MANTLE
+      - WEBUI_SECRET_KEY=abcdgdgsouwqiouehfnjshauit1y2ohjyouyoji21
       - WEBUI_URL=https://n8n.corgi-catla.ts.net:8443
+      - DATABASE_URL=postgresql://postgres:Limj3579@db:5432/openwebui
       - ENABLE_SIGNUP=True
       - DEFAULT_USER_ROLE=user
-      - DATABASE_URL=postgresql://postgres:Limj3579@db:5432/openwebui
-      - STORAGE_PROVIDER=s3
-      - S3_ENDPOINT_URL=http://minio:9000
       - ENABLE_RAG_OCR=True
       - CONTENT_EXTRACTION_ENGINE=pypdfium2
-      - S3_ACCESS_KEY_ID=admin
-      - S3_SECRET_ACCESS_KEY=Limj3579
-      - S3_BUCKET_NAME=open-webui-data
-      - S3_REGION_NAME=us-east-1
-      - S3_SECURE=False
-      - S3_UPLOAD_DIR=uploads
-      - ENABLE_S3_STORAGE=True
-      - S3_SIGNATURE_VERSION=s3v4
-      - S3_FORCE_PATH_STYLE=True
-      - SHOW_ADMIN_DETAILS=False
       - MANTLE_SHOW_ADVANCED_SETTINGS=Connections,Models,Evaluations,Documents,Web Search,Interface
 
 networks:
