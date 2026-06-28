@@ -70,9 +70,7 @@ Welcome to MANTLE. This guide covers the initial setup.
 
 create_note \
   "Curator Guide — Creating RAG Models" \
-"# Creating RAG Models
-
-This guide walks through creating a RAG model and sharing it with users.
+"This guide walks through creating a RAG model and sharing it with users.
 
 ## Step 1: Create a Knowledge Base
 1. Go to **Workspace → Knowledge**
@@ -94,9 +92,7 @@ This guide walks through creating a RAG model and sharing it with users.
 
 create_note \
   "Curator Guide — Managing Prompts" \
-"# Managing Prompts
-
-Prompts are reusable instructions that help users get consistent results.
+"Prompts are reusable instructions that help users get consistent results.
 
 ## Creating a Prompt
 1. Go to **Workspace → Prompts**
