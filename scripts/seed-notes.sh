@@ -83,7 +83,8 @@ create_note \
 2. Click **New Model**
 3. Select a base model (e.g., Qwen)
 4. In the **Knowledge** section, select your knowledge base
-5. Save the model
+5. Use the **System Prompt** field to set instructions for how the model should respond based on your knowledge
+6. Save the model
 
 ## Step 3: Share with Users
 1. Click the **lock icon** next to the model name
@@ -104,6 +105,28 @@ create_note \
 - Use clear, specific instructions
 - Include placeholders for user input
 - Test prompts with different models before sharing"
+
+create_note \
+  "System Prompt Samples" \
+"Example system prompts you can use when creating RAG models.
+
+## Q&A Assistant
+You are a helpful assistant answering questions based on the provided knowledge base. Answer clearly and concisely. If the answer is not in the knowledge base, say so — do not make up information.
+
+## Summarizer
+You are a summarization assistant. Given a document or conversation, provide a concise summary covering the key points. Use bullet points for clarity.
+
+## Tutor
+You are an educational tutor. Explain concepts in simple terms suitable for students. Use examples and analogies. If the user asks a question, guide them to the answer rather than giving it directly.
+
+## Analyst
+You are a data analyst. Review the provided documents and extract key insights, trends, and patterns. Present findings in a structured format with headings and bullet points.
+
+## Tips
+- Keep system prompts clear and specific
+- Set the expected tone (formal, casual, technical)
+- Define what the model should do when it cannot find an answer
+- Test with sample questions before sharing with users"
 
 # ── All-user notes ──────────────────────────────────────────────────────────
 
