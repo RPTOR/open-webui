@@ -60,13 +60,13 @@ Three roles: `admin` (full access), `user` (permission-evaluated), `pending` (lo
 | Persona | Workspace access | Description |
 |---|---|---|
 | **Curator** | models, knowledge, prompts | Creates RAG knowledge bases, uploads docs, binds to models |
-| **Consumer** | None | Uses chat, queries RAG via file upload, no workspace access |
+| **Consumer** | knowledge | Uses chat, manages own knowledge bases, queries RAG via file upload |
 
 ### Consumer defaults (env vars in docker-compose)
 
 ```yaml
 - USER_PERMISSIONS_WORKSPACE_MODELS_ACCESS=false
-- USER_PERMISSIONS_WORKSPACE_KNOWLEDGE_ACCESS=false
+- USER_PERMISSIONS_WORKSPACE_KNOWLEDGE_ACCESS=true
 - USER_PERMISSIONS_WORKSPACE_PROMPTS_ACCESS=false
 - USER_PERMISSIONS_WORKSPACE_TOOLS_ACCESS=false
 - USER_PERMISSIONS_WORKSPACE_SKILLS_ACCESS=false

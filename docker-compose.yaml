@@ -14,14 +14,14 @@ services:
       - WEBUI_SECRET_KEY=abcdgdgsouwqiouehfnjshauit1y2ohjyouyoji21
       - WEBUI_URL=https://n8n.corgi-catla.ts.net:8443
       - DATABASE_URL=postgresql://postgres:Limj3579@db:5432/openwebui
-      - ENABLE_SIGNUP=True
+      - ENABLE_SIGNUP=true
       - DEFAULT_USER_ROLE=user
       - ENABLE_RAG_OCR=True
       - CONTENT_EXTRACTION_ENGINE=pypdfium2
       - MANTLE_SHOW_ADVANCED_SETTINGS=Connections,Models,Evaluations,Documents,Web Search,Interface
       # ── Default user permissions (Consumer role) ──
       - USER_PERMISSIONS_WORKSPACE_MODELS_ACCESS=false
-      - USER_PERMISSIONS_WORKSPACE_KNOWLEDGE_ACCESS=false
+      - USER_PERMISSIONS_WORKSPACE_KNOWLEDGE_ACCESS=true
       - USER_PERMISSIONS_WORKSPACE_PROMPTS_ACCESS=false
       - USER_PERMISSIONS_WORKSPACE_TOOLS_ACCESS=false
       - USER_PERMISSIONS_WORKSPACE_SKILLS_ACCESS=false
