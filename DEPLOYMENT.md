@@ -264,9 +264,10 @@ The prebuilt image updates automatically to the latest upstream version. Data pe
 ## Troubleshooting
 
 | Symptom | Check |
-|---|---|
+|---|---|---|
 | Background image not showing | Hard refresh (Cmd+Shift+R / Ctrl+Shift+R). Browser may cache the old CSS. |
 | custom.css not taking effect | Verify the mount path: `docker exec mantle cat /app/backend/open_webui/static/custom.css` should show your content. |
 | Database connection error | Confirm PostgreSQL is running: `docker ps \| grep root-db-1`. Check `DATABASE_URL` value. |
 | Port conflict | Change the host port: `"3002:8080"` and update Caddy config. |
 | Health check stuck | Wait 30-60s — embedding models download on first start. |
+| Page renders unstyled through Cloudflare | Cloudflare may cache CSS files with wrong `Content-Type`. Go to **Cloudflare Dashboard → Caching → Purge Everything** to force a fresh fetch. To prevent recurrence, disable **Auto Minify (CSS)** or create a Page Rule for `_app/*` with `Cache Level: Bypass`. |
