@@ -144,8 +144,9 @@ docker compose up -d
 docker cp custom.css mantle:/app/backend/open_webui/static/custom.css
 #    favicon.*, logo.png, splash*.png → replace in static dir
 
-# 4. First admin signs up → obtain token and seed notes
-#    (see "Seeding default notes" above)
+# 4. First admin signs up → obtain token and seed everything
+#    ./scripts/seed-groups.sh "$ADMIN_TOKEN"
+#    ./scripts/seed-notes.sh "$ADMIN_TOKEN"
 
 # 5. Verify
 curl -s http://localhost:3001/health
