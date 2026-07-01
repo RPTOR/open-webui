@@ -109,13 +109,18 @@ docker compose up -d && docker cp custom.css mantle:/app/...
 #    Admin → Users → Groups → New Group
 #    Enable: workspace.models, workspace.knowledge, workspace.prompts
 
-# 4. Admin creates curator accounts and assigns them to the group
+# 4. Admin creates "MANTLE Extensions" group (replica of Consumer permissions + api_keys=true)
+#    For external API access — members can generate API keys
 
-# 5. Curators log in, create knowledge bases, upload docs,
+# 5. Admin creates curator accounts and assigns them to the group
+
+# 6. Curators log in, create knowledge bases, upload docs,
 #    create RAG models bound to knowledge
 
-# 6. Consumers sign up → automatically get restrictive defaults
+# 7. Consumers sign up → automatically get restrictive defaults
 #    They can only chat and upload files for RAG
+
+# 8. API users → add to MANTLE Extensions group to enable API key generation
 ```
 
 ### Complete permissions reference
