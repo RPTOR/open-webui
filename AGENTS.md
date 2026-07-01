@@ -61,6 +61,9 @@ ADMIN_TOKEN=$(curl -s -X POST http://localhost:3001/api/v1/auths/signin \
   -d '{"email":"admin@mantle.local","password":"Admin123!"}' | \
   python3 -c "import sys,json; print(json.load(sys.stdin).get('token',''))")
 
+# Seed groups
+./scripts/seed-groups.sh "$ADMIN_TOKEN"
+
 # Seed notes
 ./scripts/seed-notes.sh "$ADMIN_TOKEN"
 ```
