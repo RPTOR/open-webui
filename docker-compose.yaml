@@ -8,33 +8,16 @@ services:
     volumes:
       - /root/frontend/open-webui:/app/backend/data
     networks:
-      - homelab_network
+      homelab_network:
+        aliases:
+          - open-webui
     environment:
       - WEBUI_NAME=MANTLE
       - WEBUI_SECRET_KEY=abcdgdgsouwqiouehfnjshauit1y2ohjyouyoji21
-      - WEBUI_URL=https://n8n.corgi-catla.ts.net:8443
+      - WEBUI_URL=https://chat.my-mantle.com
       - DATABASE_URL=postgresql://postgres:Limj3579@db:5432/openwebui
       - ENABLE_SIGNUP=true
       - DEFAULT_USER_ROLE=user
-      - ENABLE_RAG_OCR=True
-      - CONTENT_EXTRACTION_ENGINE=pypdfium2
-      - ENABLE_CHANNELS=true
-      - ENABLE_COMMUNITY_SHARING=false
-      # ── Default user permissions (Consumer role) ──
-      - USER_PERMISSIONS_WORKSPACE_MODELS_ACCESS=false
-      - USER_PERMISSIONS_WORKSPACE_KNOWLEDGE_ACCESS=true
-      - USER_PERMISSIONS_WORKSPACE_PROMPTS_ACCESS=false
-      - USER_PERMISSIONS_WORKSPACE_TOOLS_ACCESS=false
-      - USER_PERMISSIONS_WORKSPACE_SKILLS_ACCESS=false
-      - USER_PERMISSIONS_FEATURES_IMAGE_GENERATION=false
-      - USER_PERMISSIONS_FEATURES_CHANNELS=false
-      - USER_PERMISSIONS_FEATURES_CODE_INTERPRETER=false
-      - USER_PERMISSIONS_FEATURES_AUTOMATIONS=false
-      - USER_PERMISSIONS_FEATURES_CALENDAR=false
-      - USER_PERMISSIONS_FEATURES_API_KEYS=false
-      - USER_PERMISSIONS_FEATURES_DIRECT_TOOL_SERVERS=false
-      - USER_PERMISSIONS_CHAT_TEMPORARY=false
-      - USER_PERMISSIONS_ACCESS_GRANTS_ALLOW_USERS=false
 
 networks:
   homelab_network:
